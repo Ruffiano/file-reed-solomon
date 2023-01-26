@@ -1,0 +1,15 @@
+{
+  "name": "file-reed-solomon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/example.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uint8arrays": "^2.1.10"
+  }
+}
