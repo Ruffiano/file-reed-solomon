@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/example.js"
+    "test": "node test/example1.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ronomon/reed-solomon": "^6.0.0",
     "uint8arrays": "^2.1.10"
   }
 }

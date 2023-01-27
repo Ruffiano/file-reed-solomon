@@ -362,6 +362,7 @@ ReedSolomonEncoder.prototype = {
 			toEncode[dataBytes + i] = 0;
 		}
 		toEncode.set(coefficients.subarray(0, coefficients.length), dataBytes + numZeroCoefficients);
+		return toEncode
 	}
 };
 
@@ -384,7 +385,9 @@ ReedSolomonDecoder.prototype = {
 		}
 
 		if (noError) {
-			return;
+			console.info('received data is not corrupted!');
+			const decoded = new Uint8Array(received)
+			return decoded.slice(0, -twoS)
 		}
 		var syndrome = new GenericGFPoly(this.field, syndromeCoefficients);
 		var sigmaOmega = this.runEuclideanAlgorithm(this.field.buildMonomial(twoS, 1), syndrome, twoS);
@@ -399,6 +402,8 @@ ReedSolomonDecoder.prototype = {
 			}
 			received[position] = GenericGF.addOrSubtract(received[position], errorMagnitudes[i]);
 		}
+		const decoded = new Uint8Array(received)
+		return decoded.slice(0, -twoS)
 	},
 
 	runEuclideanAlgorithm : function (a, b, R) {
